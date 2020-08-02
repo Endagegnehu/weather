@@ -1,3 +1,3 @@
 # weather
 
-## 7 days Weather forecast using Block pattern
+## 7 days Weather forecast using BLoC pattern
