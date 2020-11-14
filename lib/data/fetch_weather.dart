@@ -15,7 +15,6 @@ class FetchWeatherDataFromAPI implements FetchWeartherData {
         'http://api.openweathermap.org/data/2.5/weather?q=$cityName&units=metric&appid=539033bedf5c563c554d7e3b5ebe9d6f';
     NetworkHelper networkHelper = NetworkHelper(url);
     var weatherData = await networkHelper.getData();
-    print(weatherData.toString());
     return Weather(
       cityName: weatherData['name'],
       temperatureCelsius: weatherData['main'][0]['temp'],
@@ -29,7 +28,6 @@ class FetchWeatherDataFromAPI implements FetchWeartherData {
         'http://api.openweathermap.org/data/2.5/weather?lat=$lat&lon=$log&units=metric&appid=539033bedf5c563c554d7e3b5ebe9d6f';
     NetworkHelper networkHelper = NetworkHelper(url);
     var weatherData = await networkHelper.getData();
-    print(weatherData.toString());
     return Weather(
       cityName: weatherData['name'],
       temperatureCelsius: weatherData['main']['temp'].toDouble(),
@@ -41,9 +39,14 @@ class FetchWeatherDataFromAPI implements FetchWeartherData {
   Future<Weather> fetchWeatherOfDays(double lat, double log) async {
     var url =
         'https://api.openweathermap.org/data/2.5/onecall?lat=$lat&lon=$log&units=metric&%20exclude=hourly,daily&appid=539033bedf5c563c554d7e3b5ebe9d6f';
-    NetworkHelper networkHelper = NetworkHelper(url);
-    var weatherData = await networkHelper.getData();
-    print(weatherData.toString());
+
+    var weatherData;
+    try {
+      NetworkHelper networkHelper = NetworkHelper(url);
+      weatherData = await networkHelper.getData();
+    } catch (e) {
+      print(e);
+    }
     final coordinates = new Coordinates(lat, log);
     var addresses =
         await Geocoder.local.findAddressesFromCoordinates(coordinates);
@@ -81,8 +84,6 @@ class FetchWeatherDataFromAPI implements FetchWeartherData {
           .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
       double latitude = position.latitude;
       double longitude = position.longitude;
-      print(longitude);
-      print(latitude);
       return fetchWeatherOfDays(latitude, longitude);
     } catch (e) {
       print(e);

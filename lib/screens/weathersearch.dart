@@ -18,8 +18,9 @@ class _SearchWeatherState extends State<SearchWeather> {
   String country;
   @override
   void initState() {
+    // ignore: close_sinks
     final weatherBloc = BlocProvider.of<WeatherBloc>(context);
-    weatherBloc.add(GetWeatherForLocation(null));
+    weatherBloc.add(GetWeatherForLocation());
     super.initState();
   }
 
@@ -27,6 +28,7 @@ class _SearchWeatherState extends State<SearchWeather> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocBuilder<WeatherBloc, WeatherState>(
+        // ignore: missing_return
         builder: (context, state) {
           if (state is WeatherInitial) {
             return Container();
@@ -42,26 +44,31 @@ class _SearchWeatherState extends State<SearchWeather> {
 
   Stack buildContainer(BuildContext context, Weather weather) {
     if (weather.mainWeather == 'Thunderstorm') {
-      return buildStack(weather,
-          'https://i.pinimg.com/originals/06/1e/7d/061e7d436de6aec2e3f1df3f40660c3e.gif?raw=true');
+      return buildStack(
+        weather,
+      );
     } else if (weather.mainWeather == 'Drizzle') {
-      return buildStack(weather, 'https://i.gifer.com/Rhhw.gif?raw=true');
+      return buildStack(
+        weather,
+      );
     } else if (weather.mainWeather == 'Rain') {
-      return buildStack(weather,
-          'https://media3.giphy.com/media/l0Iy5fjHyedk9aDGU/giphy.gif?raw=true');
+      return buildStack(
+        weather,
+      );
     } else if (weather.mainWeather == 'Snow') {
-      return buildStack(weather,
-          'https://66.media.tumblr.com/b54b3b98a894c940a966c29a64f71219/tumblr_pmu8ukhf381toamj8o1_640.gif?raw=true');
+      return buildStack(
+        weather,
+      );
     } else if (weather.mainWeather == 'Clear') {
-      return buildStack(weather,
-          'https://www.beardsfuneralchapel.com/wp2/wp-content/uploads/2019/06/blue-sky-1.jpg?raw=true');
+      return buildStack(
+        weather,
+      );
     } else {
-      return buildStack(weather,
-          'https://thumbs.gfycat.com/HairyCraftyJay-size_restricted.gif?raw=true');
+      return buildStack(weather);
     }
   }
 
-  Stack buildStack(Weather weather, String url) {
+  Stack buildStack(Weather weather) {
     double hight = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Stack(
@@ -274,10 +281,5 @@ class _SearchWeatherState extends State<SearchWeather> {
     return Center(
       child: CircularProgressIndicator(),
     );
-  }
-
-  submitCityName(String value) {
-    final weatherBloc = BlocProvider.of<WeatherBloc>(context);
-    weatherBloc.add(GetWeather(value));
   }
 }

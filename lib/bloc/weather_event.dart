@@ -13,9 +13,6 @@ class GetWeather extends WeatherEvent {
 }
 
 class GetWeatherForLocation extends WeatherEvent {
-  final String cityName;
-  GetWeatherForLocation(this.cityName);
-  
   @override
-  List<Object> get props => [cityName];
+  List<Object> get props => [];
 }
