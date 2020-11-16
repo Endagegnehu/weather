@@ -35,37 +35,11 @@ class _SearchWeatherState extends State<SearchWeather> {
           } else if (state is WeatherLoading) {
             return buildLoading();
           } else if (state is WeatherLoaded) {
-            return buildContainer(context, state.weather);
+            return buildStack(state.weather);
           }
         },
       ),
     );
-  }
-
-  Stack buildContainer(BuildContext context, Weather weather) {
-    if (weather.mainWeather == 'Thunderstorm') {
-      return buildStack(
-        weather,
-      );
-    } else if (weather.mainWeather == 'Drizzle') {
-      return buildStack(
-        weather,
-      );
-    } else if (weather.mainWeather == 'Rain') {
-      return buildStack(
-        weather,
-      );
-    } else if (weather.mainWeather == 'Snow') {
-      return buildStack(
-        weather,
-      );
-    } else if (weather.mainWeather == 'Clear') {
-      return buildStack(
-        weather,
-      );
-    } else {
-      return buildStack(weather);
-    }
   }
 
   Stack buildStack(Weather weather) {
@@ -117,155 +91,66 @@ class _SearchWeatherState extends State<SearchWeather> {
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        getDate(1),
-                        style: TextStyle(
-                          fontSize: 22,
-                        ),
-                      ),
-                      Text(
-                        '${weather.day2} °C ${weather.main2Weather}',
-                        style: TextStyle(
-                          fontSize: 16,
-                        ),
-                      ),
-                      FadeInImage.memoryNetwork(
-                        placeholder: kTransparentImage,
-                        image:
-                            'http://openweathermap.org/img/wn/${weather.day2icon}@2x.png',
-                        width: 40,
-                      ),
-                    ],
-                  ),
+                  buildRowForWaether(
+                      day: weather.day2,
+                      mainWeather: weather.main2Weather,
+                      icon: weather.day2icon),
                   Divider(height: 4, color: Colors.black),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        getDate(2),
-                        style: TextStyle(
-                          fontSize: 22,
-                        ),
-                      ),
-                      Text(
-                        '${weather.day3} °C ${weather.main3Weather}',
-                        style: TextStyle(
-                          fontSize: 16,
-                        ),
-                      ),
-                      FadeInImage.memoryNetwork(
-                        placeholder: kTransparentImage,
-                        image:
-                            'http://openweathermap.org/img/wn/${weather.day3icon}@2x.png',
-                        width: 40,
-                      ),
-                    ],
-                  ),
+                  buildRowForWaether(
+                      day: weather.day3,
+                      mainWeather: weather.main3Weather,
+                      icon: weather.day3icon),
                   Divider(height: 4, color: Colors.black),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        getDate(3),
-                        style: TextStyle(
-                          fontSize: 22,
-                        ),
-                      ),
-                      Text(
-                        '${weather.day4} °C ${weather.main4Weather}',
-                        style: TextStyle(
-                          fontSize: 16,
-                        ),
-                      ),
-                      FadeInImage.memoryNetwork(
-                        placeholder: kTransparentImage,
-                        image:
-                            'http://openweathermap.org/img/wn/${weather.day4icon}@2x.png',
-                        width: 40,
-                      ),
-                    ],
-                  ),
+                  buildRowForWaether(
+                      day: weather.day4,
+                      mainWeather: weather.main4Weather,
+                      icon: weather.day4icon),
                   Divider(height: 4, color: Colors.black),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        getDate(4),
-                        style: TextStyle(
-                          fontSize: 22,
-                        ),
-                      ),
-                      Text(
-                        '${weather.day5} °C ${weather.main5Weather}',
-                        style: TextStyle(
-                          fontSize: 16,
-                        ),
-                      ),
-                      FadeInImage.memoryNetwork(
-                        placeholder: kTransparentImage,
-                        image:
-                            'http://openweathermap.org/img/wn/${weather.day5icon}@2x.png',
-                        width: 40,
-                      ),
-                    ],
-                  ),
+                  buildRowForWaether(
+                      day: weather.day5,
+                      mainWeather: weather.main5Weather,
+                      icon: weather.day5icon),
                   Divider(height: 4, color: Colors.black),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        getDate(5),
-                        style: TextStyle(
-                          fontSize: 22,
-                        ),
-                      ),
-                      Text(
-                        '${weather.day6} °C ${weather.main6Weather}',
-                        style: TextStyle(
-                          fontSize: 16,
-                        ),
-                      ),
-                      FadeInImage.memoryNetwork(
-                        placeholder: kTransparentImage,
-                        image:
-                            'http://openweathermap.org/img/wn/${weather.day6icon}@2x.png',
-                        width: 40,
-                      ),
-                    ],
-                  ),
+                  buildRowForWaether(
+                      day: weather.day6,
+                      mainWeather: weather.main6Weather,
+                      icon: weather.day6icon),
                   Divider(height: 4, color: Colors.black),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        getDate(6),
-                        style: TextStyle(
-                          fontSize: 22,
-                        ),
-                      ),
-                      Text(
-                        '${weather.day7} °C ${weather.main7Weather}',
-                        style: TextStyle(
-                          fontSize: 16,
-                        ),
-                      ),
-                      FadeInImage.memoryNetwork(
-                        placeholder: kTransparentImage,
-                        image:
-                            'http://openweathermap.org/img/wn/${weather.day7icon}@2x.png',
-                        width: 40,
-                      ),
-                    ],
-                  ),
+                  buildRowForWaether(
+                      day: weather.day7,
+                      mainWeather: weather.main7Weather,
+                      icon: weather.day7icon),
                   Divider(height: 4, color: Colors.black),
                 ],
               ),
             ),
           ),
         )
+      ],
+    );
+  }
+
+  Row buildRowForWaether({double day, String mainWeather, String icon}) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          getDate(1),
+          style: TextStyle(
+            fontSize: 22,
+          ),
+        ),
+        Text(
+          '$day °C $mainWeather',
+          style: TextStyle(
+            fontSize: 16,
+          ),
+        ),
+        FadeInImage.memoryNetwork(
+          placeholder: kTransparentImage,
+          image: 'http://openweathermap.org/img/wn/$icon@2x.png',
+          width: 40,
+        ),
       ],
     );
   }

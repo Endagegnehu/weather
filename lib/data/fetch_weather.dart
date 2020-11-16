@@ -3,12 +3,12 @@ import 'package:geolocator/geolocator.dart';
 import 'package:weather/data/model/weather.dart';
 import 'package:weather/data/networking.dart';
 
-abstract class FetchWeartherData {
+abstract class FetchWeatherData {
   Future<Weather> fetchWeather(String cityName);
   Future fetchLocation();
 }
 
-class FetchWeatherDataFromAPI implements FetchWeartherData {
+class FetchWeatherDataFromAPI implements FetchWeatherData {
   @override
   Future<Weather> fetchWeather(String cityName) async {
     var url =
@@ -40,13 +40,8 @@ class FetchWeatherDataFromAPI implements FetchWeartherData {
     var url =
         'https://api.openweathermap.org/data/2.5/onecall?lat=$lat&lon=$log&units=metric&%20exclude=hourly,daily&appid=539033bedf5c563c554d7e3b5ebe9d6f';
 
-    var weatherData;
-    try {
-      NetworkHelper networkHelper = NetworkHelper(url);
-      weatherData = await networkHelper.getData();
-    } catch (e) {
-      print(e);
-    }
+    NetworkHelper networkHelper = NetworkHelper(url);
+    var weatherData = await networkHelper.getData();
     final coordinates = new Coordinates(lat, log);
     var addresses =
         await Geocoder.local.findAddressesFromCoordinates(coordinates);
