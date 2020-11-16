@@ -36,31 +36,34 @@ class FetchWeatherDataFromAPI implements FetchWeatherData {
         await Geocoder.local.findAddressesFromCoordinates(coordinates);
     var first = addresses.first;
     return weatherData.fold(
-        (erros) => left(erros),
-        (resonse) => right(Weather(
-              cityName: first.adminArea,
-              temperatureCelsius: resonse['current']['temp'].toDouble(),
-              icon: resonse['current']['weather'][0]['icon'],
-              mainWeather: resonse['current']['weather'][0]['main'],
-              day2: resonse['daily'][0]['temp']['day'],
-              day2icon: resonse['daily'][0]['weather'][0]['icon'],
-              main2Weather: resonse['daily'][0]['weather'][0]['description'],
-              day3: resonse['daily'][1]['temp']['day'],
-              day3icon: resonse['daily'][1]['weather'][0]['icon'],
-              main3Weather: resonse['daily'][1]['weather'][0]['description'],
-              day4: resonse['daily'][2]['temp']['day'],
-              day4icon: resonse['daily'][2]['weather'][0]['icon'],
-              main4Weather: resonse['daily'][2]['weather'][0]['description'],
-              day5: resonse['daily'][3]['temp']['day'],
-              day5icon: resonse['daily'][3]['weather'][0]['icon'],
-              main5Weather: resonse['daily'][3]['weather'][0]['description'],
-              day6: resonse['daily'][4]['temp']['day'],
-              day6icon: resonse['daily'][4]['weather'][0]['icon'],
-              main6Weather: resonse['daily'][4]['weather'][0]['description'],
-              day7: resonse['daily'][5]['temp']['day'],
-              day7icon: resonse['daily'][5]['weather'][0]['icon'],
-              main7Weather: resonse['daily'][5]['weather'][0]['description'],
-            )));
+      (erros) => left(erros),
+      (resonse) => right(
+        Weather(
+          cityName: first.adminArea,
+          temperatureCelsius: resonse['current']['temp'].toDouble(),
+          icon: resonse['current']['weather'][0]['icon'],
+          mainWeather: resonse['current']['weather'][0]['main'],
+          day2: resonse['daily'][0]['temp']['day'],
+          day2icon: resonse['daily'][0]['weather'][0]['icon'],
+          main2Weather: resonse['daily'][0]['weather'][0]['description'],
+          day3: resonse['daily'][1]['temp']['day'],
+          day3icon: resonse['daily'][1]['weather'][0]['icon'],
+          main3Weather: resonse['daily'][1]['weather'][0]['description'],
+          day4: resonse['daily'][2]['temp']['day'],
+          day4icon: resonse['daily'][2]['weather'][0]['icon'],
+          main4Weather: resonse['daily'][2]['weather'][0]['description'],
+          day5: resonse['daily'][3]['temp']['day'],
+          day5icon: resonse['daily'][3]['weather'][0]['icon'],
+          main5Weather: resonse['daily'][3]['weather'][0]['description'],
+          day6: resonse['daily'][4]['temp']['day'],
+          day6icon: resonse['daily'][4]['weather'][0]['icon'],
+          main6Weather: resonse['daily'][4]['weather'][0]['description'],
+          day7: resonse['daily'][5]['temp']['day'],
+          day7icon: resonse['daily'][5]['weather'][0]['icon'],
+          main7Weather: resonse['daily'][5]['weather'][0]['description'],
+        ),
+      ),
+    );
   }
 
   @override
