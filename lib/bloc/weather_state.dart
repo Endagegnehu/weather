@@ -22,3 +22,8 @@ class WeatherLoaded extends WeatherState {
   @override
   List<Object> get props => [];
 }
+
+class Errors extends WeatherState {
+  @override
+  List<Object> get props => [];
+}

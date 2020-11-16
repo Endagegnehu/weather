@@ -18,19 +18,13 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
     WeatherEvent event,
   ) async* {
     yield WeatherLoading();
-    if (event is GetWeather) {
-      try {
-        final weather = await fetchWeartherData.fetchWeather(event.cityName);
-        yield WeatherLoaded(weather);
-      } catch (e) {
-        print(e);
-      }
-    } else if (event is GetWeatherForLocation) {
-      try {
-        final weather = await fetchWeartherData.fetchLocation();
-        yield WeatherLoaded(weather);
-      } catch (e) {
-        print(e);
+    if (event is GetWeatherForLocation) {
+      final weather = await fetchWeartherData.fetchLocation();
+      if (weather.isRight()) {
+        var weathers = weather.fold((l) => null, (r) => r);
+        yield WeatherLoaded(weathers);
+      } else {
+        yield Errors();
       }
     }
   }

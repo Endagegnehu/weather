@@ -34,10 +34,31 @@ class _SearchWeatherState extends State<SearchWeather> {
             return Container();
           } else if (state is WeatherLoading) {
             return buildLoading();
+          } else if (state is Errors) {
+            return buildErrorIcon();
           } else if (state is WeatherLoaded) {
             return buildStack(state.weather);
           }
         },
+      ),
+    );
+  }
+
+  Center buildErrorIcon() {
+    // ignore: close_sinks
+    final weatherBloc = BlocProvider.of<WeatherBloc>(context);
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          IconButton(
+            icon: Icon(Icons.refresh),
+            onPressed: () {
+              return weatherBloc.add(GetWeatherForLocation());
+            },
+          ),
+          Text('Check your internet connection and try again')
+        ],
       ),
     );
   }
