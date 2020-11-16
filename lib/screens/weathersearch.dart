@@ -113,31 +113,37 @@ class _SearchWeatherState extends State<SearchWeather> {
               child: Column(
                 children: [
                   buildRowForWaether(
+                      days: 1,
                       day: weather.day2,
                       mainWeather: weather.main2Weather,
                       icon: weather.day2icon),
                   Divider(height: 4, color: Colors.black),
                   buildRowForWaether(
+                      days: 2,
                       day: weather.day3,
                       mainWeather: weather.main3Weather,
                       icon: weather.day3icon),
                   Divider(height: 4, color: Colors.black),
                   buildRowForWaether(
+                      days: 3,
                       day: weather.day4,
                       mainWeather: weather.main4Weather,
                       icon: weather.day4icon),
                   Divider(height: 4, color: Colors.black),
                   buildRowForWaether(
+                      days: 4,
                       day: weather.day5,
                       mainWeather: weather.main5Weather,
                       icon: weather.day5icon),
                   Divider(height: 4, color: Colors.black),
                   buildRowForWaether(
+                      days: 5,
                       day: weather.day6,
                       mainWeather: weather.main6Weather,
                       icon: weather.day6icon),
                   Divider(height: 4, color: Colors.black),
                   buildRowForWaether(
+                      days: 6,
                       day: weather.day7,
                       mainWeather: weather.main7Weather,
                       icon: weather.day7icon),
@@ -151,12 +157,13 @@ class _SearchWeatherState extends State<SearchWeather> {
     );
   }
 
-  Row buildRowForWaether({double day, String mainWeather, String icon}) {
+  Row buildRowForWaether(
+      {int days, double day, String mainWeather, String icon}) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
-          getDate(1),
+          getDate(days),
           style: TextStyle(
             fontSize: 22,
           ),
