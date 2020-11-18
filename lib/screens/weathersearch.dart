@@ -183,6 +183,7 @@ class _SearchWeatherState extends State<SearchWeather> {
     );
   }
 
+  @visibleForTesting
   String getDate(int num) {
     DateTime date = DateTime.now();
     var newDate = DateTime(date.year, date.month, date.day + num);
