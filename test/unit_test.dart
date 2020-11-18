@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:mockito/mockito.dart';
-import 'package:weather/data/fetch_weather.dart';
+import 'package:weather/data/fetch_weather_and_date.dart';
+import 'package:weather/screens/weathersearch.dart';
 
 class FetchWeather extends Mock implements FetchWeatherDataFromAPI {}
 
@@ -25,6 +26,9 @@ void main() {
           .then((value) async => await value.fold((l) => l, (r) => r));
       //change to your city name
       expect(data.cityName, 'Addis Ababa');
+    });
+    test('Date test', () {
+      expect(getDate(1), 'Thursday');
     });
   });
 }

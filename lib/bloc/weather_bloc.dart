@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:weather/data/fetch_weather.dart';
+import 'package:weather/data/fetch_weather_and_date.dart';
 import 'package:weather/data/model/weather.dart';
 
 part 'weather_event.dart';

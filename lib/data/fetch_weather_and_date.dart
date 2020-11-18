@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:geocoder/geocoder.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:intl/intl.dart';
 import 'package:weather/data/model/weather.dart';
 import 'package:weather/data/networking.dart';
 
@@ -54,4 +55,11 @@ class FetchWeatherDataFromAPI {
     double longitude = position.longitude;
     return fetchWeatherOfDays(latitude, longitude);
   }
+}
+
+String getDate(int num) {
+  DateTime date = DateTime.now();
+  var newDate = DateTime(date.year, date.month, date.day + num);
+  String dateFormat = DateFormat('EEEE').format(newDate);
+  return dateFormat;
 }

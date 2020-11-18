@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:intl/intl.dart';
 import 'package:transparent_image/transparent_image.dart';
 import 'package:weather/bloc/weather_bloc.dart';
+import 'package:weather/data/fetch_weather_and_date.dart';
 import 'package:weather/data/model/weather.dart';
 
 void main() {
@@ -181,14 +181,6 @@ class _SearchWeatherState extends State<SearchWeather> {
         ),
       ],
     );
-  }
-
-  @visibleForTesting
-  String getDate(int num) {
-    DateTime date = DateTime.now();
-    var newDate = DateTime(date.year, date.month, date.day + num);
-    String dateFormat = DateFormat('EEEE').format(newDate);
-    return dateFormat;
   }
 
   Center buildLoading() {
