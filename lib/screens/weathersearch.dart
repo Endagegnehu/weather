@@ -81,6 +81,7 @@ class _SearchWeatherState extends State<SearchWeather> {
               children: [
                 Text(
                   weather.cityName,
+                  key: Key('cityName'),
                   style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.w700,
@@ -164,6 +165,7 @@ class _SearchWeatherState extends State<SearchWeather> {
       children: [
         Text(
           getDate(days),
+          key: Key('rowOfDays'),
           style: TextStyle(
             fontSize: 22,
           ),

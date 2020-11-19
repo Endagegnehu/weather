@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_driver/flutter_driver.dart' as dr;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:path/path.dart' as p;
@@ -31,7 +30,7 @@ void main() {
       }
     });
     test('Test city name..', () async {
-      final cityName = find.text('text');
+      final cityName = dr.find.byValueKey('cityName');
       expect(await driver.getText(cityName), 'Addis Ababa');
     });
   });
