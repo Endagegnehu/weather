@@ -3,7 +3,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:mockito/mockito.dart';
 import 'package:weather/data/fetch_weather_and_date.dart';
-import 'package:weather/screens/weathersearch.dart';
 
 class FetchWeather extends Mock implements FetchWeatherDataFromAPI {}
 

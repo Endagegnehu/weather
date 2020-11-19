@@ -18,6 +18,8 @@ void main() {
           ),
         ),
       );
+      await widgetTester.pump();
+      // await widgetTester.tap(find.byType(FlatButton));
     });
   });
 }
