@@ -12,7 +12,7 @@ void main() {
   double lat = 8.9806;
   double long = 38.7578;
   var url =
-      'https://api.openweathermap.org/data/2.5/onecall?lat=$lat&lon=$long&units=metric&%20exclude=hourly,daily&appid=539033bedf5c563c554d7e3b5ebe9d6f';
+      'https://api.openweathermap.org/data/2.5/onecall?lat=$lat&lon=$long&units=metric&%20exclude=hourly,daily&appid=';
   group('Unit test...', () {
     test('Api test', () async {
       var resposes = await http.get(url);

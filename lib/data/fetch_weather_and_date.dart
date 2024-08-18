@@ -8,7 +8,7 @@ class FetchWeatherDataFromAPI {
   Future<Either<Exception, dynamic>> fetchWeatherOfDays(
       double lat, double log) async {
     var url =
-        'https://api.openweathermap.org/data/2.5/onecall?lat=$lat&lon=$log&units=metric&%20exclude=hourly,daily&appid=539033bedf5c563c554d7e3b5ebe9d6f';
+        'https://api.openweathermap.org/data/2.5/onecall?lat=$lat&lon=$log&units=metric&%20exclude=hourly,daily&appid=';
     NetworkHelper networkHelper = NetworkHelper(url);
     var weatherData = await networkHelper.getData();
     return weatherData.fold(
