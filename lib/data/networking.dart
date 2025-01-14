@@ -2,8 +2,8 @@ import 'dart:convert';
 import 'package:dartz/dartz.dart';
 import 'package:http/http.dart' as http;
 
-class NetworkHelper {
-  NetworkHelper(this.url);
+class WeatherNetworkHelper {
+  WeatherNetworkHelper(this.url);
   final String url;
   Future<Either<Exception, dynamic>> getData() async {
     http.Response response;
