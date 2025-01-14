@@ -20,7 +20,7 @@ class _SearchWeatherState extends State<SearchWeather> {
   void initState() {
     // ignore: close_sinks
     final weatherBloc = BlocProvider.of<WeatherBloc>(context);
-    weatherBloc.add(GetWeatherForLocation());
+    weatherBloc.add(GetWeatherForLocationEvent());
     super.initState();
   }
 
@@ -54,7 +54,7 @@ class _SearchWeatherState extends State<SearchWeather> {
           IconButton(
             icon: Icon(Icons.refresh),
             onPressed: () {
-              return weatherBloc.add(GetWeatherForLocation());
+              return weatherBloc.add(GetWeatherForLocationEvent());
             },
           ),
           Text('Check your internet connection and try again')
@@ -113,37 +113,37 @@ class _SearchWeatherState extends State<SearchWeather> {
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 children: [
-                  buildRowForWaether(
+                  buildRowForWeather(
                       days: 1,
                       day: weather.day2,
                       mainWeather: weather.main2Weather,
                       icon: weather.day2icon),
                   Divider(height: 4, color: Colors.black),
-                  buildRowForWaether(
+                  buildRowForWeather(
                       days: 2,
                       day: weather.day3,
                       mainWeather: weather.main3Weather,
                       icon: weather.day3icon),
                   Divider(height: 4, color: Colors.black),
-                  buildRowForWaether(
+                  buildRowForWeather(
                       days: 3,
                       day: weather.day4,
                       mainWeather: weather.main4Weather,
                       icon: weather.day4icon),
                   Divider(height: 4, color: Colors.black),
-                  buildRowForWaether(
+                  buildRowForWeather(
                       days: 4,
                       day: weather.day5,
                       mainWeather: weather.main5Weather,
                       icon: weather.day5icon),
                   Divider(height: 4, color: Colors.black),
-                  buildRowForWaether(
+                  buildRowForWeather(
                       days: 5,
                       day: weather.day6,
                       mainWeather: weather.main6Weather,
                       icon: weather.day6icon),
                   Divider(height: 4, color: Colors.black),
-                  buildRowForWaether(
+                  buildRowForWeather(
                       days: 6,
                       day: weather.day7,
                       mainWeather: weather.main7Weather,
@@ -158,7 +158,7 @@ class _SearchWeatherState extends State<SearchWeather> {
     );
   }
 
-  Row buildRowForWaether(
+  Row buildRowForWeather(
       {int days, double day, String mainWeather, String icon}) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,

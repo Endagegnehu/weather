@@ -5,7 +5,7 @@ import 'package:weather/data/model/weather.dart';
 import 'package:weather/data/networking.dart';
 
 class FetchWeatherDataFromAPI {
-  Future<Either<Exception, dynamic>> fetchWeatherOfDays(
+  Future<Either<Exception, dynamic>> fetchWeatherForDays(
       double lat, double log) async {
     var url =
         'https://api.openweathermap.org/data/2.5/onecall?lat=$lat&lon=$log&units=metric&%20exclude=hourly,daily&appid=';
@@ -46,12 +46,12 @@ class FetchWeatherDataFromAPI {
     );
   }
 
-  Future fetchLocation() async {
+  Future fetchWeatherForLocation() async {
     Position position = await Geolocator()
         .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
     double latitude = position.latitude;
     double longitude = position.longitude;
-    return fetchWeatherOfDays(latitude, longitude);
+    return fetchWeatherForDays(latitude, longitude);
   }
 }
 

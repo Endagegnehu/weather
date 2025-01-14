@@ -9,9 +9,9 @@ part 'weather_event.dart';
 part 'weather_state.dart';
 
 class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
-  final FetchWeatherDataFromAPI fetchWeartherData;
+  final FetchWeatherDataFromAPI fetchWeatherData;
 
-  WeatherBloc(this.fetchWeartherData) : super(WeatherInitial());
+  WeatherBloc(this.fetchWeatherData) : super(WeatherInitial());
 
   @override
   Stream<WeatherState> mapEventToState(
@@ -19,7 +19,7 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
   ) async* {
     yield WeatherLoading();
     if (event is GetWeatherForLocation) {
-      final weather = await fetchWeartherData.fetchLocation();
+      final weather = await fetchWeatherData.fetchLocation();
       if (weather.isRight()) {
         var weathers = weather.fold((l) => null, (r) => r);
         yield WeatherLoaded(weathers);

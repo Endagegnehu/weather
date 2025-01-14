@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 
-class Weather extends Equatable {
+class WeatherModel extends Equatable {
   final String cityName;
   final double temperatureCelsius;
   final String icon;
@@ -25,7 +25,7 @@ class Weather extends Equatable {
   final String day7icon;
   final String main7Weather;
 
-  Weather({
+  WeatherModel({
     this.day7,
     this.day7icon,
     this.main7Weather,
